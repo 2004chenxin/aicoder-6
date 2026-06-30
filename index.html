@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>在线商城系统</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div id="app">
+    <h1>Welcome to Online Shop</h1>
+    <ul>
+      <li v-for="product in products" :key="product.id">
+        {{ product.name }}
+      </li>
+    </ul>
+  </div>
+  </div>
+  <script>
+const App = {
+  data() {
+    return {
+      products: []
+    }
+  },
+  created() {
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(data => (this.products = data));
+  }
+}
+    Vue.createApp(App).mount('#app');
+  </script>
+  <script src="./main.js"></script>
+</body>
+</html>
